@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portofolio - Rian Dwi Pambudi</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* CSS Reset & Global Variables */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --bg-color: #f4f7f6;
+            --text-color: #333;
+            --card-bg: #fff;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            background-color: var(--primary-color);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .nav-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 25px;
+            transition: 0.3s ease;
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: var(--secondary-color);
+        }
+
+        /* Hamburger Menu (Hidden on Desktop) */
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .hamburger span {
+            display: block;
+            width: 25px;
+            height: 3px;
+            background-color: #fff;
+            transition: all 0.3s ease-in-out;
+        }
+
+        /* Container & Sections */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        section {
+            margin-bottom: 60px;
+        }
+
+        h2.section-title {
+            text-align: center;
+            color: var(--primary-color);
+            font-size: 2rem;
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        h2.section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background-color: var(--secondary-color);
+            margin: 10px auto 0;
+            border-radius: 2px;
+        }
+
+        /* Hero / Cover Section */
+        #home {
+            text-align: center;
+            padding: 80px 20px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 80vh;
+        }
+
+        .profile-img {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid #fff;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            margin-bottom: 20px;
+            background-color: #fff;
+        }
+
+        #home h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+        }
+
+        #home p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        /* Typing cursor animation */
+        .cursor {
+            display: inline-block;
+            width: 3px;
+            background-color: #fff;
+            animation: blink 1s step-end infinite;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        /* Card Style */
+        .card {
+            background: var(--card-bg);
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            margin-bottom: 20px;
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+        }
+
+        /* Grid Layouts */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .card h3 {
+            color: var(--secondary-color);
+            margin-bottom: 15px;
+        }
+
+        .card ul {
+            list-style-position: inside;
+            padding-left: 10px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--primary-color);
+            color: #fff;
+            text-align: center;
+            padding: 30px 20px;
+        }
+
+        footer a {
+            color: var(--secondary-color);
+            text-decoration: none;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-container {
+                justify-content: flex-end; /* Taruh tombol hamburger di kanan */
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            nav ul {
+                position: absolute;
+                top: 100%;
+                left: -100%; /* Sembunyikan menu ke kiri */
+                flex-direction: column;
+                background-color: var(--primary-color);
+                width: 100%;
+                text-align: center;
+                padding: 20px 0;
+                box-shadow: 0 5px 5px rgba(0,0,0,0.1);
+            }
+
+            nav ul.active {
+                left: 0; /* Munculkan menu */
+            }
+
+            nav ul li {
+                margin: 10px 0;
+            }
+
+            .grid-2 {
+                grid-template-columns: 1fr;
+            }
+
+            #home h1 {
+                font-size: 2.2rem;
+            }
+
+            .profile-img {
+                width: 150px;
+                height: 150px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="nav-container">
+            <div class="hamburger" id="hamburger-btn">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul id="nav-menu">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#tentang">Tentang Saya</a></li>
+                <li><a href="#pendidikan">Pendidikan</a></li>
+                <li><a href="#pengalaman">Pengalaman</a></li>
+                <li><a href="#skill">Skill</a></li>
+                <li><a href="#project">Project</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section id="home">
+        <img src="94954.png" alt="Foto Profil Rian Dwi Pambudi" class="profile-img">
+        <h1>Rian Dwi Pambudi</h1>
+        <p><span id="typing-text"></span><span class="cursor">&nbsp;</span></p>
+    </section>
+
+    <div class="container">
+        <section id="tentang">
+            <h2 class="section-title">Tentang Saya</h2>
+            <div class="card" style="text-align: center;">
+                <p>Saya adalah mahasiswa Sistem Informasi Universitas Pamulang yang memiliki latar belakang pendidikan SMK Jurusan Elektronika. Saya memiliki pengalaman Praktik Kerja Lapangan (PKL) sebagai Helper Mekanik pada divisi <strong>New Product Development (NPD)</strong> di PT Indo Prima Perkasa.</p>
+                <br>
+                <p>Saat ini, saya sedang mengembangkan kemampuan di bidang teknologi informasi, khususnya dalam ranah database, analisis sistem, dan pengembangan aplikasi sederhana. Saya memiliki semangat belajar yang tinggi, mampu bekerja sama dalam tim, serta siap mengembangkan keterampilan baru untuk mendukung karier profesional di masa depan.</p>
+            </div>
+        </section>
+
+        <section id="pendidikan">
+            <h2 class="section-title">Pendidikan</h2>
+            <div class="grid-2">
+                <div class="card">
+                    <h3>S1 Sistem Informasi</h3>
+                    <p><strong>Universitas Pamulang</strong> <em>(Sedang Berlangsung)</em></p>
+                    <br>
+                    <p>Fokus Studi:</p>
+                    <ul>
+                        <li>Mempelajari Dasar Pemrograman</li>
+                        <li>Manajemen dan Perancangan Basis Data</li>
+                        <li>Analisis Sistem Informasi</li>
+                        <li>Teknologi Informasi</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3>SMK Jurusan Elektronika</h3>
+                    <p>Fokus Studi:</p>
+                    <br>
+                    <ul>
+                        <li>Dasar-dasar Elektronika</li>
+                        <li>Perakitan Rangkaian Sederhana</li>
+                        <li>Pemeliharaan Peralatan Elektronik</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="pengalaman">
+            <h2 class="section-title">Pengalaman PKL</h2>
+            <div class="card">
+                <h3>PT Indo Prima Perkasa</h3>
+                <p><strong>Posisi: Helper Mekanik – New Product Development (NPD)</strong></p>
+                <br>
+                <ul>
+                    <li>Membantu proses perawatan dan perbaikan mesin produksi.</li>
+                    <li>Mendukung tim dalam riset dan pengembangan produk baru.</li>
+                    <li>Melakukan observasi alur dan proses produksi furniture plastik.</li>
+                    <li>Membantu pengecekan komponen mesin dan pemeliharaan peralatan kerja.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="skill">
+            <h2 class="section-title">Keahlian (Skill)</h2>
+            <div class="grid-2">
+                <div class="card">
+                    <h3>Hard Skill</h3>
+                    <ul>
+                        <li>Microsoft Word & PowerPoint</li>
+                        <li>Dasar Database & Perancangan ERD</li>
+                        <li>Dasar Pemrograman (HTML, CSS)</li>
+                        <li>Dasar Elektronika</li>
+                        <li>Troubleshooting Sederhana</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3>Soft Skill</h3>
+                    <ul>
+                        <li>Kerja Sama Tim</li>
+                        <li>Komunikasi Efektif</li>
+                        <li>Disiplin & Manajemen Waktu</li>
+                        <li>Kemauan Belajar yang Tinggi</li>
+                        <li>Adaptasi di Lingkungan Kerja</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="project">
+            <h2 class="section-title">Project Kuliah & Pribadi</h2>
+            <div class="grid-2">
+                <div class="card">
+                    <h3>1. Desain Database Perpustakaan</h3>
+                    <ul>
+                        <li>Membuat Entity Relationship Diagram (ERD).</li>
+                        <li>Merancang relasi antar tabel untuk efisiensi data.</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3>2. Website Profil Pribadi</h3>
+                    <ul>
+                        <li>Membangun struktur web menggunakan HTML dan CSS.</li>
+                        <li>Merancang antarmuka untuk menampilkan biodata dan portofolio.</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3>3. Sistem Peminjaman Buku</h3>
+                    <ul>
+                        <li>Membuat Flowchart alur peminjaman.</li>
+                        <li>Merancang Use Case Diagram.</li>
+                        <li>Membangun struktur Database pendukung.</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3>4. Analisis Data Sederhana</h3>
+                    <ul>
+                        <li>Mengolah dan menganalisis data dasar berbasis tugas kuliah.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="sertifikat">
+            <h2 class="section-title">Sertifikasi</h2>
+            <div class="card" style="text-align: center;">
+                <h3>🏅 Sertifikat Praktik Kerja Lapangan (PKL)</h3>
+                <p>PT Indo Prima Perkasa</p>
+            </div>
+        </section>
+    </div>
+
+    <footer id="kontak">
+        <h2>Hubungi Saya</h2>
+        <p style="margin: 15px 0;">Mari terhubung dan berdiskusi lebih lanjut!</p>
+        <p>Email: <a href="mailto:rian.dwipambudi@email.com">rian.dwipambudi@email.com</a></p>
+        <p>WhatsApp: 08XX-XXXX-XXXX</p>
+        <p>LinkedIn: <a href="https://linkedin.com/in/riandwipambudi" target="_blank">linkedin.com/in/riandwipambudi</a></p>
+        <br>
+        <p>&copy; 2026 Rian Dwi Pambudi. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        // 1. Fitur Hamburger Menu (Untuk tampilan Mobile)
+        const hamburgerBtn = document.getElementById('hamburger-btn');
+        const navMenu = document.getElementById('nav-menu');
+
+        hamburgerBtn.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+
+        // Menutup menu otomatis jika salah satu link diklik (di tampilan mobile)
+        document.querySelectorAll('#nav-menu li a').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+            });
+        });
+
+        // 2. Fitur Efek Mengetik (Typing Effect) pada bagian Hero/Home
+        const textToType = "Mahasiswa Sistem Informasi | IT Enthusiast";
+        const typingElement = document.getElementById("typing-text");
+        let charIndex = 0;
+        const typingSpeed = 100; // Kecepatan mengetik dalam milidetik
+
+        function typeWriter() {
+            if (charIndex < textToType.length) {
+                typingElement.innerHTML += textToType.charAt(charIndex);
+                charIndex++;
+                setTimeout(typeWriter, typingSpeed);
+            }
+        }
+
+        // Jalankan efek mengetik ketika halaman selesai dimuat
+        window.onload = () => {
+            typeWriter();
+        };
+    </script>
+</body>
+</html>
